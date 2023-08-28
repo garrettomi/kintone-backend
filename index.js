@@ -54,6 +54,9 @@ app.post("/postData", cors(corsOptions), async (req, res) => {
       city: {
         value: req.body.city,
       },
+      email: {
+        value: req.body.email,
+      },
     },
   };
   const options = {
