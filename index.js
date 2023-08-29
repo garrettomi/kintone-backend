@@ -57,6 +57,12 @@ app.post("/postData", cors(corsOptions), async (req, res) => {
       email: {
         value: req.body.email,
       },
+      locCoordsX: {
+        value: req.body.locCoordsX,
+      },
+      locCoordsY: {
+        value: req.body.locCoordsY,
+      },
     },
   };
   const options = {
