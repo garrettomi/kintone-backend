@@ -63,6 +63,9 @@ app.post("/postData", cors(corsOptions), async (req, res) => {
       locCoordsY: {
         value: req.body.locCoordsY,
       },
+      imageUrl: {
+        value: req.body.imageUrl,
+      },
     },
   };
   const options = {
