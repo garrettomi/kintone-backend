@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cors());
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://kintone-project-backend.onrender.com",
 };
 
 const multipleRecordsEndpoint = `https://${subdomain}.kintone.com/k/v1/records.json?app=${appID}`;
