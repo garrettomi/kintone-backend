@@ -3,7 +3,7 @@ const cors = require("cors");
 const PORT = 8000;
 const app = express();
 
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 
 const subdomain = process.env.SUBDOMAIN;
 const appID = process.env.APPID;

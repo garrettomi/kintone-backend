@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+/node_modules
 /dist
 /tmp
 /out-tsc
@@ -79,6 +80,7 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
+.env.local
 
 # next.js build output
 .next
