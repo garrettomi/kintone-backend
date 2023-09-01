@@ -14,11 +14,11 @@ app.use(express.json());
 
 app.use(cors());
 const corsOptions = {
-  origin: "https://kintone-travel-tracker.vercel.app",
+  origin: "https://kintone-travel-tracker.vercel.app/home",
 };
 
-const multipleRecordsEndpoint = `https://${subdomain}.kintone.com/k/v1/preview/app/deploy.json`;
-const singleRecordEndpoint = `https://${subdomain}.kintone.com/k/v1/preview/app/deploy.json`;
+const multipleRecordsEndpoint = `https://${subdomain}.kintone.com/k/v1/records.json?app=${appID}`;
+const singleRecordEndpoint = `https://${subdomain}.kintone.com/k/v1/record.json?app=${appID}`;
 
 app.get("/", (req, res) => {
   res.send("Welcome to the backend");
