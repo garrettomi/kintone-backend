@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const PORT = 8000;
 const app = express();
+const fetch = require("node-fetch");
 
 require("dotenv").config({ path: "./.env" });
 
