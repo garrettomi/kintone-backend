@@ -24,55 +24,65 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getData", cors(corsOptions), async (req, res) => {
-  const fetchOptions = {
-    method: "GET",
-    headers: {
-      "X-Cybozu-API-Token": apiToken,
-    },
-  };
-  const response = await fetch(multipleRecordsEndpoint, fetchOptions);
-  const jsonResponse = await response.json();
-  res.json(jsonResponse);
+  try {
+    const fetchOptions = {
+      method: "GET",
+      headers: {
+        "X-Cybozu-API-Token": apiToken,
+      },
+    };
+    const response = await fetch(multipleRecordsEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal service error" });
+  }
 });
 
 app.post("/postData", cors(corsOptions), async (req, res) => {
-  const requestBody = {
-    app: appID,
-    record: {
-      country: {
-        value: req.body.country,
+  try {
+    const requestBody = {
+      app: appID,
+      record: {
+        country: {
+          value: req.body.country,
+        },
+        state: {
+          value: req.body.state,
+        },
+        city: {
+          value: req.body.city,
+        },
+        email: {
+          value: req.body.email,
+        },
+        locCoordsX: {
+          value: req.body.locCoordsX,
+        },
+        locCoordsY: {
+          value: req.body.locCoordsY,
+        },
+        imageUrl: {
+          value: req.body.imageUrl,
+        },
       },
-      state: {
-        value: req.body.state,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "X-Cybozu-API-Token": apiToken,
+        "Content-Type": "application/json",
       },
-      city: {
-        value: req.body.city,
-      },
-      email: {
-        value: req.body.email,
-      },
-      locCoordsX: {
-        value: req.body.locCoordsX,
-      },
-      locCoordsY: {
-        value: req.body.locCoordsY,
-      },
-      imageUrl: {
-        value: req.body.imageUrl,
-      },
-    },
-  };
-  const options = {
-    method: "POST",
-    headers: {
-      "X-Cybozu-API-Token": apiToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestBody),
-  };
-  const response = await fetch(singleRecordEndpoint, options);
-  const jsonResponse = await response.json();
-  res.json(jsonResponse);
+      body: JSON.stringify(requestBody),
+    };
+    const response = await fetch(singleRecordEndpoint, options);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal service error" });
+  }
 });
 
 app.listen(PORT, () => {
